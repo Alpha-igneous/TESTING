@@ -80,5 +80,5 @@ externalPort = 3001
 
 [deployment]
 deploymentTarget = "autoscale"
-run = ["npm", "start", "--prefix", "floatchat-backend"]
-build = ["npm", "install", "--prefix", "floatchat-frontend"]
+run = ["npm", "run", "preview"]
+build = ["npm", "run", "build"]
