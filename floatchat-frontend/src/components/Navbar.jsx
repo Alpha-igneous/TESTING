@@ -40,7 +40,7 @@ const Navbar = ({ isAuthenticated, user, onAuthClick, onLogout }) => {
       </div>
       
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 space-x-2">
+        <ul className="menu menu-horizontal px-1 gap-2">
           {navLinks.map((link) => {
             const IconComponent = link.icon
             const isActive = location.pathname === link.path

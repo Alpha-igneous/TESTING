@@ -110,7 +110,7 @@ const Hero = ({ onGetStarted }) => {
   ]
 
   return (
-    <div ref={heroRef} className="min-h-screen relative overflow-hidden pt-20">
+    <div ref={heroRef} className="min-h-screen relative overflow-hidden pt-24 pb-12">
       {oceanImages.length > 0 && (
         <div className="absolute inset-0 -z-10">
           {oceanImages.map((img, index) => (
@@ -131,9 +131,9 @@ const Hero = ({ onGetStarted }) => {
         </div>
       )}
 
-      <div className="container mx-auto px-6 py-20 relative z-10">
-        <div className="text-center max-w-4xl mx-auto">
-          <h1 className="hero-title text-6xl md:text-8xl font-bold mb-8">
+      <div className="container mx-auto px-6 py-16 relative z-10 max-w-7xl">
+        <div className="text-center max-w-5xl mx-auto">
+          <h1 className="hero-title text-5xl md:text-7xl xl:text-8xl font-bold mb-8 leading-tight">
             <span className="bg-gradient-to-r from-blue-200 via-cyan-200 to-blue-300 bg-clip-text text-transparent">
               Explore Ocean Data
             </span>
@@ -143,7 +143,7 @@ const Hero = ({ onGetStarted }) => {
             </span>
           </h1>
 
-          <p className="hero-subtitle text-xl md:text-2xl text-blue-100 mb-12 leading-relaxed">
+          <p className="hero-subtitle text-lg md:text-xl xl:text-2xl text-gray-200 mb-12 leading-relaxed max-w-4xl mx-auto">
             FloatChat combines cutting-edge AI with real ocean data from ARGO floats.
             <br className="hidden md:block" />
             Ask questions, visualize data, and discover insights about our planet's oceans.
@@ -169,7 +169,7 @@ const Hero = ({ onGetStarted }) => {
           </div>
         </div>
 
-        <div id="features" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
+        <div id="features" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-16 md:mt-20">
           {features.map((feature, index) => {
             const IconComponent = feature.icon
             return (
