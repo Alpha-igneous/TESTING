@@ -1,0 +1,80 @@
+modules = ["nodejs-20", "web", "python-3.11"]
+[agent]
+expertMode = true
+
+[nix]
+channel = "stable-25_05"
+packages = ["bash", "glibcLocales"]
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "FloatChat Backend"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "FloatChat Frontend"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "RAG LLM Service"
+
+[[workflows.workflow]]
+name = "FloatChat Backend"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd floatchat-backend && npm start"
+waitForPort = 3000
+
+[workflows.workflow.metadata]
+outputType = "console"
+
+[[workflows.workflow]]
+name = "FloatChat Frontend"
+author = "agent"
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd floatchat-frontend && npm run dev"
+waitForPort = 5000
+
+[[workflows.workflow]]
+name = "RAG LLM Service"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd rag-llm && python3 simple_app.py"
+waitForPort = 8000
+
+[workflows.workflow.metadata]
+outputType = "console"
+
+[[ports]]
+localPort = 3000
+externalPort = 3000
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[[ports]]
+localPort = 8000
+externalPort = 8000
+
+[deployment]
+deploymentTarget = "autoscale"
+run = ["npm", "start", "--prefix", "floatchat-backend"]
+build = ["npm", "install", "--prefix", "floatchat-frontend"]

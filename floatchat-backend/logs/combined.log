@@ -1,0 +1,23 @@
+{"level":"info","message":"FloatChat Backend Server running on port 3000","service":"floatchat-backend","timestamp":"2025-09-13T06:01:58.520Z"}
+{"level":"info","message":"Environment: development","service":"floatchat-backend","timestamp":"2025-09-13T06:01:58.522Z"}
+{"level":"info","message":"MongoDB Connected: ac-e7ldeur-shard-00-00.zwhg8bs.mongodb.net:27017/floatchat","service":"floatchat-backend","timestamp":"2025-09-13T06:02:00.744Z"}
+{"level":"info","message":"SIGINT signal received","service":"floatchat-backend","timestamp":"2025-09-13T06:02:32.093Z"}
+{"level":"info","message":"FloatChat Backend Server running on port 3000","service":"floatchat-backend","timestamp":"2025-09-13T06:03:35.342Z"}
+{"level":"info","message":"Environment: development","service":"floatchat-backend","timestamp":"2025-09-13T06:03:35.346Z"}
+{"level":"info","message":"MongoDB Connected: ac-e7ldeur-shard-00-00.zwhg8bs.mongodb.net:27017/floatchat","service":"floatchat-backend","timestamp":"2025-09-13T06:03:38.620Z"}
+{"level":"info","message":"SIGINT signal received","service":"floatchat-backend","timestamp":"2025-09-13T06:03:56.837Z"}
+{"level":"info","message":"FloatChat Backend Server running on port 3000","service":"floatchat-backend","timestamp":"2025-09-13T07:02:37.909Z"}
+{"level":"info","message":"Environment: development","service":"floatchat-backend","timestamp":"2025-09-13T07:02:37.912Z"}
+{"level":"info","message":"MongoDB Connected: ac-e7ldeur-shard-00-00.zwhg8bs.mongodb.net:27017/floatchat","service":"floatchat-backend","timestamp":"2025-09-13T07:02:42.091Z"}
+{"level":"info","message":"SIGINT signal received","service":"floatchat-backend","timestamp":"2025-09-13T07:03:03.546Z"}
+{"level":"info","message":"FloatChat Backend Server running on port 3000","service":"floatchat-backend","timestamp":"2025-09-13T11:46:34.986Z"}
+{"level":"info","message":"Environment: development","service":"floatchat-backend","timestamp":"2025-09-13T11:46:34.993Z"}
+{"level":"info","message":"MongoDB Connected: ac-e7ldeur-shard-00-00.zwhg8bs.mongodb.net:27017/floatchat","service":"floatchat-backend","timestamp":"2025-09-13T11:46:39.150Z"}
+{"level":"info","message":"FloatChat Backend Server running on port 3000","service":"floatchat-backend","timestamp":"2025-09-13T11:46:41.318Z"}
+{"level":"info","message":"Environment: development","service":"floatchat-backend","timestamp":"2025-09-13T11:46:41.324Z"}
+{"level":"info","message":"MongoDB Connected: ac-e7ldeur-shard-00-00.zwhg8bs.mongodb.net:27017/floatchat","service":"floatchat-backend","timestamp":"2025-09-13T11:46:42.045Z"}
+{"level":"info","message":"SIGINT signal received","service":"floatchat-backend","timestamp":"2025-09-13T11:46:47.080Z"}
+{"level":"info","message":"FloatChat Backend Server running on port 3000","service":"floatchat-backend","timestamp":"2025-09-13T12:03:38.075Z"}
+{"level":"info","message":"Environment: development","service":"floatchat-backend","timestamp":"2025-09-13T12:03:38.086Z"}
+{"level":"info","message":"MongoDB Connected: ac-e7ldeur-shard-00-00.zwhg8bs.mongodb.net:27017/floatchat","service":"floatchat-backend","timestamp":"2025-09-13T12:03:42.282Z"}
+{"level":"info","message":"SIGINT signal received","service":"floatchat-backend","timestamp":"2025-09-13T12:05:11.797Z"}

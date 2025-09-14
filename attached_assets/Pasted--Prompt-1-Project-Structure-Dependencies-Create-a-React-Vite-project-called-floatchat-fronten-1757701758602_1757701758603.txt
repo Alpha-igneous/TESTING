@@ -1,0 +1,206 @@
+ Prompt 1 Project Structure & Dependencies
+ Create a React + Vite project called "floatchat-frontend" with this exact structure:
+ floatchat-frontend/
+ ├── public/
+ │   ├── index.html
+ │   └── favicon.ico
+ ├── src/
+ │   ├── components/
+ │   │   ├── ui/                     
+│   │   │   ├── Button.jsx
+ │   │   │   ├── Input.jsx
+ │   │   │   ├── Card.jsx
+ │   │   │   └── Modal.jsx
+ │   │   ├── layout/
+ │   │   │   ├── Header.jsx
+ │   │   │   ├── Sidebar.jsx
+ │   │   │   └── Layout.jsx
+ │   │   ├── auth/
+ │   │   │   ├── LoginForm.jsx
+ │   │   │   ├── RegisterForm.jsx
+ │   │   │   └── AuthGuard.jsx
+ │   │   ├── chat/
+ │   │   │   ├── ChatInterface.jsx
+ │   │   │   ├── MessageBubble.jsx
+ # Reusable UI components
+ │   │   │   ├── ChatInput.jsx
+ │   │   │   └── ChatHistory.jsx
+ │   │   ├── onboarding/
+ │   │   │   ├── Welcome.jsx
+ │   │   │   ├── Features.jsx
+ │   │   │   └── OnboardingFlow.jsx
+│   │   ├── dashboard/
+ │   │   │   ├── DashboardHome.jsx
+ │   │   │   ├── StatsCards.jsx
+ │   │   │   └── QuickActions.jsx
+ │   │   └── visualizations/
+ │   │       ├── OceanMap.jsx
+ │   │       ├── DataCharts.jsx
+ │   │       └── FloatTracker.jsx
+ │   ├── pages/
+ │   │   ├── HomePage.jsx           # Landing/onboarding page
+ │   │   ├── LoginPage.jsx
+ │   │   ├── RegisterPage.jsx
+ │   │   ├── DashboardPage.jsx      # Main app dashboard
+ │   │   ├── ChatPage.jsx           # Chat interface
+ │   │   ├── DataExplorerPage.jsx   # Data visualization
+ │   │   └── ProfilePage.jsx
+ │   ├── services/
+ │   │   ├── api.js                 # Axios configuration
+ │   │   ├── auth.js                # Authentication API calls
+ │   │   ├── chat.js                # Chat API calls
+ │   │   ├── images.js              # Unsplash API calls
+ │   │   └── users.js               # User management APIs
+ │   ├── store/
+ │   │   ├── authStore.js           # Zustand auth state
+ │   │   ├── chatStore.js           # Chat state management
+ │   │   └── themeStore.js          # Theme & UI state
+ │   ├── hooks/
+ │   │   ├── useAuth.js
+ │   │   ├── useChat.js
+ │   │   └── useApi.js
+ │   ├── utils/
+ │   │   ├── constants.js
+ │   │   ├── helpers.js
+ │   │   └── formatters.js
+ │   ├── styles/
+ │   │   ├── globals.css
+ │   │   └── components.css
+ │   ├── App.jsx
+ │   └── main.jsx
+ ├── package.json
+ ├── vite.config.js
+ ├── tailwind.config.js
+ ├── postcss.config.js
+ └── .env
+ Install these dependencies exactly:
+ npm create vite@latest . -- --template react
+ npm install react react-dom react-router-dom
+ npm install @tailwindcss/forms daisyui
+ npm install framer-motion gsap animejs particles.js
+ npm install three @react-three/fiber @react-three/drei
+ npm install plotly.js recharts
+ npm install axios zustand react-hook-form
+ npm install react-hot-toast lucide-react
+ npm install date-fns matter-js
+ npm install @types/react @types/react-dom
+Dev dependencies:
+ npm install -D tailwindcss postcss autoprefixer vite @vitejs/plugin-react eslint
+ Create .env file:
+ VITE_API_BASE_URL=http://localhost:5000
+ VITE_UNSPLASH_ACCESS_KEY=your_unsplash_key_here
+ Create vite.config.js:
+ import { defineConfig } from 'vite'
+ import react from '@vitejs/plugin-react'
+ export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 3000,
+    host: true
+  },
+  define: {
+    'process.env': {}
+  }
+ })
+ Create tailwind.config.js:
+ module.exports = {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        ocean: {
+          50: '#f0f9ff',
+          100: '#e0f2fe',
+          200: '#bae6fd',
+          300: '#7dd3fc',
+          400: '#38bdf8',
+          500: '#0ea5e9',
+          600: '#0284c7',
+          700: '#0369a1',
+          800: '#075985',
+          900: '#0c4a6e'
+        }
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif']
+      }
+    }
+  },
+  plugins: [require('daisyui'), require('@tailwindcss/forms')],
+  daisyui: {
+    themes: ['light', 'dark', 'ocean']
+  }
+ }
+ Prompt 2 Environment & Configuration
+Prompt 3 Onboarding & Landing Page Based on Images)
+ Create the onboarding experience matching the provided UI designs:
+ 1. src/pages/HomePage.jsx - Landing page with ocean wave background:- Full-screen ocean wave video/image background- "Dive into Ocean Data with FloatChat" hero title- "Explore the depths of ocean data with our AI-powered conversational interface" subt- "Get Started" blue button and "I already have an account" link- Clean, modern design matching the provided screenshots
+ 2. src/components/onboarding/Welcome.jsx:- "Welcome to FloatChat" title- "Discover the power of AI to explore the vast ocean world..." subtitle- Carousel with 3 feature slides:
+ a) AI Chat Interface - "Ask complex questions in plain English"
+ b) Data Visualization - "Visualize complex data sets with interactive charts"
+ c) Collaborative Insights - "Share insights and collaborate with fellow oceanographe- Progress dots at bottom- "Get Started" button and "Already have an account? Log In" link
+ 3. src/components/onboarding/Features.jsx:- Three feature cards with icons:
+ a) Conversational AI (chat bubble icon)
+ b) Data Visualization (chart icon) 
+c) Collaborative Insights (users icon)- Ocean-themed gradient backgrounds- Modern glassmorphism card effects
+ 4. Add smooth page transitions using Framer Motion
+ 5. Implement GSAP animations for text reveals and card entrances
+ 6. Use ocean wave particle effects with particles.js
+ Prompt 4 Authentication System
+ Create authentication components with modern UI:
+ 1. src/pages/LoginPage.jsx:- Clean login form with email/password- "Remember me" checkbox- "Forgot password?" link- Social login options (Google, GitHub)- Link to register page- Ocean-themed gradient background
+ 2. src/pages/RegisterPage.jsx:- Registration form: firstName, lastName, email, password, confirmPassword- Terms and conditions checkbox- Link to login page- Form validation with react-hook-form- Success animation on registration
+ 3. src/services/auth.js - API integration:- login(email, password) - POST to /api/auth/login
+- register(userData) - POST to /api/auth/register  - logout() - POST to /api/auth/logout- getProfile() - GET /api/auth/profile- Store JWT token in localStorage- Axios interceptor for token attachment
+ 4. src/store/authStore.js - Zustand state:- user state, isAuthenticated, token- login, logout, setUser actions- Token persistence and validation
+ 5. src/components/auth/AuthGuard.jsx:- Protect routes requiring authentication- Redirect to login if not authenticated- Show loading spinner while checking auth
+ Prompt 5 Main Dashboard & Chat Interface Based on UI
+ Create the main dashboard matching the home screen design:
+ 1. src/pages/DashboardPage.jsx:- "FloatChat" header with settings icon- "Dive into Ocean Data" main title- "Explore the depths of ocean data with our AI-powered conversational interface"- Green "Start Exploring" button- "Key Features" section with 3 cards (matching the design)- Ocean wave background with parallax scrolling
+ 2. src/components/chat/ChatInterface.jsx:- Full-screen chat interface- Message history with user/AI bubbles- Typing indicators and loading states- Message timestamps- Smooth animations for new messages
+ 3. src/components/chat/ChatInput.jsx:- Input field with "Ask about ocean data..." placeholder- Send button with animation- Support for multiline messages- File upload for data queries (future)- Voice input button (optional)
+ 4. src/components/chat/MessageBubble.jsx:- Different styles for user vs AI messages- Support for text, images, charts- Copy message button- Reaction buttons- Source citations for AI responses
+ 5. src/services/chat.js:- sendMessage(message) - POST to /api/chat/message- getChatHistory() - GET /api/chat/history- Real-time message handling- Error handling and retry logic
+Prompt 6 Data Visualization & Ocean Components
+ Create interactive data visualization components:
+ 1. src/components/visualizations/OceanMap.jsx:- 3D ocean globe using Three.js/React Three Fiber- ARGO float locations as interactive points- Zoom and pan controls- Animated water surface with shaders- Click on floats to see data
+ 2. src/components/visualizations/DataCharts.jsx:- Temperature/salinity profiles using Plotly.js- Interactive depth-time plots- Multiple chart types (line, scatter, heatmap)- Export functionality- Real-time data updates
+ 3. src/components/visualizations/FloatTracker.jsx:- Track individual ARGO float trajectories- Animated path visualization- Time slider to show historical movement- Data overlay on map
+ 4. src/pages/DataExplorerPage.jsx:- Split layout: filters on left, visualizations on right- Date range picker, location filters- Parameter selection (temp, salinity, etc.)- Export and share functionality
+ 5. Use Recharts for 2D charts and Plotly.js for 3D visualizations
+ 6. Implement smooth animations with Framer Motion
+ Prompt 7 User Profile & Settings
+ Create user profile management:
+ 1. src/pages/ProfilePage.jsx:- User avatar with Unsplash image selection- Edit profile form (name, email, preferences)- Theme selection (light/dark/ocean)- Account settings and preferences- Usage statistics and chat history
+ 2. src/services/images.js:- searchImages(query) - GET /api/images/search- setProfileImage(imageUrl) - POST /api/images/profile- Image preview and selection grid- Integration with Unsplash API
+ 3. src/components/ui/ components:- Button.jsx - Consistent button styling- Input.jsx - Form input with validation- Card.jsx - Reusable card container
+- Modal.jsx - Modal dialogs- All components use DaisyUI + custom styling
+ 4. Dark/light theme toggle with smooth transitions
+ 5. Responsive design for mobile and tablet
+ Prompt 8 Routing & State Management
+ Set up routing and global state:
+ 1. src/App.jsx - Main app with routing:- React Router setup with protected routes- Route definitions for all pages- Global loading states- Error boundary handling- Theme provider context
+ 2. src/store/ Zustand stores:- authStore.js - Authentication state- chatStore.js - Chat messages and history  - themeStore.js - UI theme and preferences- Persistent storage integration
+ 3. src/hooks/ Custom hooks:- useAuth.js - Authentication logic- useChat.js - Chat functionality- useApi.js - API call management- useLocalStorage.js - Local storage helper
+ 4. src/services/api.js - Axios configuration:- Base URL configuration- Request/response interceptors- JWT token attachment- Error handling and retry logic- Loading state management
+ 5. Route protection and navigation guards
+ 6. Global error handling with react-hot-toast
+ Prompt 9 Animations & Interactive Effects
+ Implement smooth animations and effects:
+ 1. Page transitions using Framer Motion:- Slide transitions between pages- Fade in/out animations- Stagger animations for lists- Smooth route transitions
+ 2. GSAP animations for:- Text reveals and typing effects- Ocean wave animations- Loading sequences
+- Interactive hover effects
+ 3. Particles.js for:- Ocean bubble effects- Background particle systems- Interactive particle animations- Performance-optimized rendering
+ 4. Three.js integration:- 3D ocean surface with realistic water shader- ARGO float visualizations in 3D space- Interactive camera controls- Optimized rendering for performance
+ 5. Micro-interactions:- Button hover/click animations- Form field focus states- Loading spinners and progress bars- Success/error state animations
+ Prompt 10 Final Integration & Polish
+ Complete the frontend integration:
+ 1. Connect all components to backend APIs:- Authentication flow working end-to-end- Chat messages proxying to Python RAG-LLM- Profile image selection from Unsplash- Error handling for API failures
+ 2. Responsive design implementation:- Mobile-first approach- Tablet and desktop breakpoints- Touch-friendly interactions- Responsive typography and spacing
+ 3. Performance optimizations:- Code splitting for routes- Lazy loading for heavy components- Image optimization and caching- Bundle size optimization
+ 4. Accessibility features:- Keyboard navigation support- Screen reader compatibility- High contrast mode support- Focus management
+ 5. Testing and quality:- Component testing setup- E2E testing for critical flows- ESLint configuration- TypeScript integration (optional)
+ 6. Build and deployment:
+- Production build optimization- Environment variable handling- Static asset optimization- PWA configuration (optional)
+ This frontend will create a stunning, interactive FloatChat interface that matches your UI
+ designs and integrates seamlessly with the Node.js backend and Python RAGLLM service
