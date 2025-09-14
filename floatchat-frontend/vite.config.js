@@ -6,18 +6,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5000,
-    host: '0.0.0.0',
-    allowedHosts: true
-  },
-  cacheDir: '/tmp/vite',
-  optimizeDeps: {
-    noDiscovery: true,
-    include: []
+    host: '0.0.0.0'
   },
   build: {
     sourcemap: false
-  },
-  define: {
-    'process.env': {}
   }
 })
