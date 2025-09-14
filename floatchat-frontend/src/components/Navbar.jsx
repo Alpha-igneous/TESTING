@@ -29,11 +29,11 @@ const Navbar = ({ isAuthenticated, user, onAuthClick, onLogout }) => {
   ]
 
   return (
-    <div className="navbar bg-base-100/90 backdrop-blur-md fixed top-0 z-50 border-b border-blue-200/30">
+    <div className="navbar bg-gray-900/90 backdrop-blur-md fixed top-0 z-50 border-b border-gray-700/30">
       <div className="navbar-start">
-        <Link to="/" className="btn btn-ghost normal-case text-xl text-blue-600 hover:text-blue-700">
+        <Link to="/" className="btn btn-ghost normal-case text-xl text-cyan-400 hover:text-cyan-300">
           <Waves className="w-6 h-6 mr-2" />
-          <span className="font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+          <span className="font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
             FloatChat
           </span>
         </Link>
@@ -51,8 +51,8 @@ const Navbar = ({ isAuthenticated, user, onAuthClick, onLogout }) => {
                   to={link.path}
                   className={`btn btn-ghost normal-case ${
                     isActive 
-                      ? 'bg-blue-500/20 text-blue-600 border border-blue-300/50' 
-                      : 'hover:bg-blue-500/10 hover:text-blue-600'
+                      ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-400/50' 
+                      : 'hover:bg-cyan-500/10 hover:text-cyan-400 text-gray-300'
                   }`}
                 >
                   <IconComponent className="w-4 h-4 mr-2" />
@@ -78,12 +78,12 @@ const Navbar = ({ isAuthenticated, user, onAuthClick, onLogout }) => {
                 )}
               </div>
             </label>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-lg bg-base-100/95 backdrop-blur-md rounded-box w-52 border border-blue-200/30">
+            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-lg bg-gray-800/95 backdrop-blur-md rounded-box w-52 border border-gray-600/30">
               <li className="menu-title">
-                <span className="text-blue-600">Welcome back!</span>
+                <span className="text-cyan-400">Welcome back!</span>
               </li>
               <li>
-                <a className="justify-between hover:bg-blue-500/10">
+                <a className="justify-between hover:bg-cyan-500/10 text-gray-300">
                   Profile
                   <User className="w-4 h-4" />
                 </a>
@@ -103,7 +103,7 @@ const Navbar = ({ isAuthenticated, user, onAuthClick, onLogout }) => {
         ) : (
           <button 
             onClick={onAuthClick}
-            className="btn btn-primary bg-gradient-to-r from-blue-500 to-cyan-500 border-none text-white hover:from-blue-600 hover:to-cyan-600 shadow-lg hover:shadow-xl transition-all duration-300"
+            className="btn btn-primary bg-gradient-to-r from-cyan-500 to-blue-500 border-none text-white hover:from-cyan-600 hover:to-blue-600 shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <User className="w-4 h-4 mr-2" />
             Sign In
@@ -112,10 +112,10 @@ const Navbar = ({ isAuthenticated, user, onAuthClick, onLogout }) => {
         
         {/* Mobile menu button */}
         <div className="dropdown dropdown-end lg:hidden ml-2">
-          <label tabIndex={0} className="btn btn-ghost btn-circle">
+          <label tabIndex={0} className="btn btn-ghost btn-circle text-gray-300 hover:text-cyan-400" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </label>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-lg bg-base-100/95 backdrop-blur-md rounded-box w-52 border border-blue-200/30">
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-lg bg-gray-800/95 backdrop-blur-md rounded-box w-52 border border-gray-600/30">
             {navLinks.map((link) => {
               const IconComponent = link.icon
               const isActive = location.pathname === link.path
@@ -124,7 +124,7 @@ const Navbar = ({ isAuthenticated, user, onAuthClick, onLogout }) => {
                 <li key={link.path}>
                   <Link 
                     to={link.path}
-                    className={`${isActive ? 'bg-blue-500/20 text-blue-600' : ''}`}
+                    className={`${isActive ? 'bg-cyan-500/20 text-cyan-400' : 'text-gray-300 hover:text-cyan-400'}`}
                   >
                     <IconComponent className="w-4 h-4" />
                     {link.label}

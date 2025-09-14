@@ -27,7 +27,7 @@ function App() {
   }, [])
 
   return (
-    <div ref={appRef} className="App min-h-screen relative overflow-hidden">
+    <div ref={appRef} className="App min-h-screen relative overflow-hidden bg-slate-900">
       <OceanBackground />
       <Router>
         <div className="relative z-10">

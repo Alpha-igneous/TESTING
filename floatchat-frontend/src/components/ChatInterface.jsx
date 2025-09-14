@@ -150,17 +150,17 @@ const ChatInterface = ({ isAuthenticated }) => {
 
           <div className={`rounded-2xl px-4 py-3 shadow-lg backdrop-blur-sm ${
             isBot 
-              ? 'bg-white/90 text-gray-800 border border-blue-200/50' 
-              : 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white'
+              ? 'bg-gray-700/90 text-gray-100 border border-gray-600/50' 
+              : 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white'
           }`}>
             <p className="whitespace-pre-wrap leading-relaxed">{message.content}</p>
             
             {message.dataPoints && message.dataPoints.length > 0 && (
               <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2">
                 {message.dataPoints.map((point, index) => (
-                  <div key={index} className="bg-blue-50 rounded-lg p-2 border border-blue-200/50">
-                    <div className="text-xs text-blue-600 font-medium">{point.label}</div>
-                    <div className="text-sm font-bold text-blue-800">{point.value}</div>
+                  <div key={index} className="bg-gray-600/50 rounded-lg p-2 border border-gray-500/50">
+                    <div className="text-xs text-cyan-400 font-medium">{point.label}</div>
+                    <div className="text-sm font-bold text-cyan-300">{point.value}</div>
                   </div>
                 ))}
               </div>
@@ -168,9 +168,9 @@ const ChatInterface = ({ isAuthenticated }) => {
             
             {message.sources && message.sources.length > 0 && (
               <div className="mt-3 space-y-1">
-                <div className="text-xs text-blue-600 font-medium">Sources:</div>
+                <div className="text-xs text-cyan-400 font-medium">Sources:</div>
                 {message.sources.map((source, index) => (
-                  <a key={index} href={source.url} className="block text-xs text-blue-500 hover:text-blue-700 underline">
+                  <a key={index} href={source.url} className="block text-xs text-cyan-300 hover:text-cyan-200 underline">
                     {source.title}
                   </a>
                 ))}
@@ -178,7 +178,7 @@ const ChatInterface = ({ isAuthenticated }) => {
             )}
             
             <div className={`text-xs mt-2 ${
-              isBot ? 'text-gray-500' : 'text-blue-100'
+              isBot ? 'text-gray-400' : 'text-cyan-100'
             }`}>
               {new Date(message.timestamp).toLocaleTimeString()}
             </div>
@@ -189,18 +189,18 @@ const ChatInterface = ({ isAuthenticated }) => {
   }
 
   return (
-    <div ref={chatRef} className="min-h-screen bg-gradient-to-br from-blue-50/50 to-cyan-50/50 pt-20 pb-8">
+    <div ref={chatRef} className="min-h-screen bg-gradient-to-br from-slate-900/95 to-gray-900/95 pt-20 pb-8">
       <div className="container mx-auto px-6 h-full flex flex-col">
         <div className="text-center mb-8">
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent mb-4">
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-4">
             Ocean AI Assistant
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-300 max-w-2xl mx-auto">
             Ask questions about ocean data, ARGO floats, marine research, or request data visualizations.
           </p>
         </div>
 
-        <div className="flex-1 bg-white/60 backdrop-blur-sm rounded-2xl border border-blue-200/50 shadow-xl">
+        <div className="flex-1 bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-gray-600/50 shadow-xl">
           <div className="h-96 overflow-y-auto p-6 space-y-4">
             {messages.map((message, index) => (
               <MessageBubble 
@@ -218,8 +218,8 @@ const ChatInterface = ({ isAuthenticated }) => {
                       <Bot className="w-5 h-5 text-white" />
                     </div>
                   </div>
-                  <div className="bg-white/90 rounded-2xl px-4 py-3 shadow-lg border border-blue-200/50">
-                    <div className="flex items-center space-x-2 text-blue-600">
+                  <div className="bg-gray-700/90 rounded-2xl px-4 py-3 shadow-lg border border-gray-600/50">
+                    <div className="flex items-center space-x-2 text-cyan-400">
                       <Loader className="w-4 h-4 animate-spin" />
                       <span className="text-sm">Analyzing ocean data...</span>
                     </div>
@@ -231,7 +231,7 @@ const ChatInterface = ({ isAuthenticated }) => {
             <div ref={messagesEndRef} />
           </div>
 
-          <div className="border-t border-blue-200/50 p-4">
+          <div className="border-t border-gray-600/50 p-4">
             <div className="flex space-x-3">
               <div className="flex-1">
                 <textarea
@@ -240,7 +240,7 @@ const ChatInterface = ({ isAuthenticated }) => {
                   onKeyPress={handleKeyPress}
                   placeholder={isAuthenticated ? "Ask about ocean data, ARGO floats, or request visualizations..." : "Please sign in to start chatting"}
                   disabled={!isAuthenticated || isLoading}
-                  className="w-full px-4 py-3 rounded-xl border border-blue-200/50 bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 resize-none transition-all duration-300"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-600/50 bg-gray-700/80 backdrop-blur-sm text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 resize-none transition-all duration-300"
                   rows="1"
                   style={{ minHeight: '48px', maxHeight: '120px' }}
                 />
@@ -248,7 +248,7 @@ const ChatInterface = ({ isAuthenticated }) => {
               <button
                 onClick={handleSendMessage}
                 disabled={!inputMessage.trim() || !isAuthenticated || isLoading}
-                className="px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl hover:from-blue-600 hover:to-cyan-600 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-xl hover:from-cyan-600 hover:to-blue-600 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
                 {isLoading ? (
                   <Loader className="w-5 h-5 animate-spin" />
