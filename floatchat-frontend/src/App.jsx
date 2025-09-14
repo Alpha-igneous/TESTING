@@ -1,34 +1,70 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect, useRef } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
+import gsap from 'gsap'
 import './App.css'
 
+// Import components
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import ChatInterface from './components/ChatInterface'
+import DataVisualization from './components/DataVisualization'
+import AuthModal from './components/AuthModal'
+import OceanBackground from './components/OceanBackground'
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [showAuthModal, setShowAuthModal] = useState(false)
+  const [user, setUser] = useState(null)
+  const appRef = useRef(null)
+
+  useEffect(() => {
+    // Initialize GSAP animations
+    gsap.fromTo(appRef.current, 
+      { opacity: 0 }, 
+      { opacity: 1, duration: 1.5, ease: "power2.out" }
+    )
+  }, [])
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div ref={appRef} className="App min-h-screen relative overflow-hidden">
+      <OceanBackground />
+      <Router>
+        <div className="relative z-10">
+          <Navbar 
+            isAuthenticated={isAuthenticated}
+            user={user}
+            onAuthClick={() => setShowAuthModal(true)}
+            onLogout={() => {
+              setIsAuthenticated(false)
+              setUser(null)
+            }}
+          />
+          
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Hero onGetStarted={() => setShowAuthModal(true)} />
+                <ChatInterface isAuthenticated={isAuthenticated} />
+              </>
+            } />
+            <Route path="/data" element={<DataVisualization />} />
+          </Routes>
+
+          {showAuthModal && (
+            <AuthModal
+              onClose={() => setShowAuthModal(false)}
+              onSuccess={(userData) => {
+                setIsAuthenticated(true)
+                setUser(userData)
+                setShowAuthModal(false)
+              }}
+            />
+          )}
+        </div>
+      </Router>
+      <Toaster position="top-right" />
+    </div>
   )
 }
 
